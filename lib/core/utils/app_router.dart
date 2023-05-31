@@ -1,5 +1,5 @@
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:webviewer/core/utils/functions/custom_transition_animated_page.dart';
 import 'package:webviewer/features/connected_devices/presentation/connected_devices_view.dart';
 import 'package:webviewer/features/home/presentation/home_view.dart';
 
@@ -16,12 +16,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kConnectedDevicesView,
-        pageBuilder: (context, state) => CustomTransitionPage<void>(
-          transitionDuration: const Duration(seconds: 1),
-          key: state.pageKey,
-          child: const ConnectedDevicesView(),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-              ScaleTransition(scale: animation, child: child),
+        pageBuilder: (context, state) =>
+            CustomTransitionAnimatedPage.transitionScale(
+          state: state,
+          page: const ConnectedDevicesView(),
         ),
       ),
     ],
