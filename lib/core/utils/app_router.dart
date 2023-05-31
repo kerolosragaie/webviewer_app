@@ -5,7 +5,7 @@ import 'package:webviewer/features/home/presentation/views/home_view.dart';
 
 // Routes names
 const kHomeView = '/';
-const kConnectedDevicesView = '/ConnectedDevicesView';
+const kConnectedDevicesView = '/connectedDevicesView';
 
 abstract class AppRouter {
   static final router = GoRouter(

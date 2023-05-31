@@ -13,7 +13,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
           icon: const Icon(Icons.devices),
           onPressed: () {
-            GoRouter.of(context).pushNamed(kConnectedDevicesView);
+            GoRouter.of(context).push(kConnectedDevicesView);
           },
         ),
       ],
