@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:webviewer/core/utils/app_router.dart';
 
 class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppbarWidget({super.key});
@@ -10,7 +12,9 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
           icon: const Icon(Icons.devices),
-          onPressed: () {},
+          onPressed: () {
+            GoRouter.of(context).pushNamed(kConnectedDevicesView);
+          },
         ),
       ],
     );
