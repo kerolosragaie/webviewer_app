@@ -7,7 +7,6 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WebViewController webViewController = WebViewController();
-
     return WebViewWidget(
       controller: webViewController,
     );
