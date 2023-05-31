@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webviewer/core/utils/errors/failures.dart';
 
@@ -5,6 +7,13 @@ class WebviewFailure extends Failure {
   WebviewFailure(super.message);
 
   factory WebviewFailure.fromWebViewError(WebResourceError error) {
+    log('''
+Page resource error:
+  code: ${error.errorCode}
+  description: ${error.description}
+  errorType: ${error.errorType}
+  isForMainFrame: ${error.isForMainFrame}
+          ''');
     switch (error.errorType) {
       case WebResourceErrorType.badUrl:
         return WebviewFailure("Malformed URL.");

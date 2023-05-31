@@ -1,9 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:webviewer/core/utils/errors/webview_failure.dart';
 
 part 'webview_state.dart';
 
@@ -22,18 +21,11 @@ class WebviewCubit extends Cubit<WebviewState> {
         NavigationDelegate(
           onProgress: (int progress) {
             if (progress == 100) {
-              emit(WebviewLoaded());
+              emit(WebviewLoaded(webViewController: webViewController));
             }
           },
           onWebResourceError: (WebResourceError error) {
-            emit(WebviewError(error: error));
-            log('''
-Page resource error:
-  code: ${error.errorCode}
-  description: ${error.description}
-  errorType: ${error.errorType}
-  isForMainFrame: ${error.isForMainFrame}
-          ''');
+            emit(WebviewError(error: WebviewFailure.fromWebViewError(error)));
           },
           onUrlChange: (UrlChange change) {
             emit(WebviewLoading());
