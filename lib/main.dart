@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:webviewer/core/constants/app_theme.dart';
+import 'package:webviewer/core/constants/constants.dart';
 import 'package:webviewer/core/utils/app_router.dart';
 
 void main() {
@@ -12,10 +14,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Webviewer App',
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
+      title: kAppName,
+      theme: kAppTheme,
       routerConfig: AppRouter.router,
     );
   }
