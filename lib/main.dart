@@ -3,12 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webviewer/core/constants/app_theme.dart';
 import 'package:webviewer/core/constants/constants.dart';
 import 'package:webviewer/core/utils/app_router.dart';
-import 'package:webviewer/core/utils/service_locater.dart' as di;
 import 'package:webviewer/features/home/presentation/manager/webview_cubit/webview_cubit.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await di.setupServiceLocater();
   runApp(const MyApp());
 }
 

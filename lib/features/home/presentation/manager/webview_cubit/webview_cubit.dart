@@ -10,7 +10,7 @@ part 'webview_state.dart';
 
 class WebviewCubit extends Cubit<WebviewState> {
   WebViewController? controller;
-  late final WebView webView;
+  WebView? webView;
   WebviewCubit() : super(WebviewInitial());
 
   void initWebView({final String url = 'https://flutter.dev'}) {
@@ -24,26 +24,40 @@ class WebviewCubit extends Cubit<WebviewState> {
       onWebViewCreated: (WebViewController webViewController) {
         controller = webViewController;
       },
+      onWebResourceError: (error) {
+        emit(WebviewError(error: WebviewFailure.fromWebViewError(error)));
+      },
       onProgress: (int progress) {
         log("Progress $progress %");
       },
       gestureNavigationEnabled: true,
       geolocationEnabled: false,
     );
-    emit(WebviewLoaded(webView: webView));
+    emit(WebviewLoaded(webView: webView!));
   }
 
   void reloadUrl() {
     emit(WebviewLoading());
-    controller!
-      ..clearCache()
-      ..reload().whenComplete(() => emit(WebviewLoaded(webView: webView)));
+    try {
+      controller!
+          .reload()
+          .whenComplete(() => emit(WebviewLoaded(webView: webView!)));
+    } catch (e) {
+      if (e is WebResourceError) {
+        emit(WebviewError(error: WebviewFailure.fromWebViewError(e)));
+      }
+      //Will load the cached error
+      emit(WebviewLoaded(webView: webView!));
+    }
   }
 
   void changeUrl({required String url}) {
     emit(WebviewLoading());
-    controller!
-      ..clearCache()
-      ..loadUrl(url).whenComplete(() => emit(WebviewLoaded(webView: webView)));
+    if (controller != null) {
+      controller!
+        ..clearCache()
+        ..loadUrl(url)
+            .whenComplete(() => emit(WebviewLoaded(webView: webView!)));
+    }
   }
 }
