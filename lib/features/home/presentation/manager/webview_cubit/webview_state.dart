@@ -8,8 +8,8 @@ class WebviewInitial extends WebviewState {}
 class WebviewLoading extends WebviewState {}
 
 class WebviewLoaded extends WebviewState {
-  final WebViewController webViewController;
-  WebviewLoaded({required this.webViewController});
+  final WebView webView;
+  WebviewLoaded({required this.webView});
 }
 
 class WebviewError extends WebviewState {

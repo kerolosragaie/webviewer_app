@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webviewer/core/constants/app_theme.dart';
 import 'package:webviewer/core/constants/constants.dart';
 import 'package:webviewer/core/utils/app_router.dart';
@@ -21,9 +20,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) =>
-              WebviewCubit(webViewController: di.sl<WebViewController>())
-                ..initWebViewController(),
+          create: (_) => WebviewCubit()..initWebView(),
         ),
       ],
       child: MaterialApp.router(
