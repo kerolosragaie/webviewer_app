@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewer/core/constants/app_theme.dart';
 import 'package:webviewer/core/constants/constants.dart';
 import 'package:webviewer/core/utils/app_router.dart';
-import 'package:webviewer/features/home/presentation/manager/webview_cubit/webview_cubit.dart';
+import 'package:webviewer/features/home/presentation/store/webview_store.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return MultiProvider(
       providers: [
-        BlocProvider(
-          create: (_) => WebviewCubit()..initWebView(),
+        Provider(
+          create: (_) => WebviewStore(context)..initWebview(),
         ),
       ],
       child: MaterialApp.router(
