@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:webviewer/core/utils/functions/custom_transition_animated_page.dart';
-import 'package:webviewer/features/connected_devices/presentation/connected_devices_view.dart';
+import 'package:webviewer/features/connected_devices/presentation/views/connected_devices_view.dart';
 import 'package:webviewer/features/home/presentation/views/home_view.dart';
 
 // Routes names
@@ -17,7 +17,7 @@ abstract class AppRouter {
       GoRoute(
         path: kConnectedDevicesView,
         pageBuilder: (context, state) =>
-            CustomTransitionAnimatedPage.transitionScale(
+            CustomTransitionAnimatedPage.transitionFade(
           state: state,
           page: const ConnectedDevicesView(),
         ),
