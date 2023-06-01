@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webviewer/core/widgets/cusomt_error.dart';
+import 'package:webviewer/core/widgets/loading_indicator.dart';
 import 'package:webviewer/features/home/presentation/manager/webview_cubit/webview_cubit.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -11,7 +12,7 @@ class HomeViewBody extends StatelessWidget {
     return BlocBuilder<WebviewCubit, WebviewState>(
       builder: (context, state) {
         if (state is WebviewLoading) {
-          return const CircularProgressIndicator();
+          return LoadingIndicators.ballSpinFadeLoader(context: context);
         } else if (state is WebviewLoaded) {
           return state.webView;
         } else if (state is WebviewError) {
@@ -19,7 +20,7 @@ class HomeViewBody extends StatelessWidget {
             errorMessage: state.error.message,
           );
         }
-        return const CircularProgressIndicator();
+        return LoadingIndicators.ballSpinFadeLoader(context: context);
       },
     );
   }

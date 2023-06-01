@@ -14,14 +14,16 @@ class CustomErrorWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final mQWidth = MediaQuery.of(context).size.width;
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.4,
-      child: Row(
+      height: double.infinity,
+      width: double.infinity,
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Icon(
             Icons.warning,
             color: Colors.red,
-            size: mQWidth * 0.03,
+            size: mQWidth * 0.3,
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.45,
