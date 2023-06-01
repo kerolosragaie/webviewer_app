@@ -46,7 +46,7 @@ class WebviewCubit extends Cubit<WebviewState> {
       if (e is WebResourceError) {
         emit(WebviewError(error: WebviewFailure.fromWebViewError(e)));
       }
-      //Will load the cached error
+      //Will load the cached site
       emit(WebviewLoaded(webView: webView!));
     }
   }
