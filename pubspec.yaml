@@ -38,18 +38,23 @@ dependencies:
   #For service locater and in app route
   get_it: ^7.2.0
   go_router: ^6.5.6
-  #Bloc pattern
+  #State management
   flutter_bloc: ^8.1.2
+  provider: ^6.0.5
+  flutter_mobx: ^2.0.6+5
   #Webview
   flutter_webview_pro: ^3.0.1+4
   #External devices
-  bluetooth_advanced: ^0.0.83
+  flutter_blue_plus: ^1.5.2
   #UI
   loading_indicator: ^3.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  mobx_codegen: ^2.3.0
+  build_runner: ^2.4.4
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
