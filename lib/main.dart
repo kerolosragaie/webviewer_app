@@ -3,10 +3,12 @@ import 'package:provider/provider.dart';
 import 'package:webviewer/core/constants/app_theme.dart';
 import 'package:webviewer/core/constants/constants.dart';
 import 'package:webviewer/core/utils/app_router.dart';
+import 'package:webviewer/core/utils/functions/permissions_handler.dart';
 import 'package:webviewer/features/home/presentation/store/webview_store.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await requestPermissions();
   runApp(const MyApp());
 }
 

@@ -48,6 +48,8 @@ dependencies:
   flutter_blue_plus: ^1.5.2
   #UI
   loading_indicator: ^3.1.0
+  #For handling permissions
+  permission_handler: ^10.2.0
 
 dev_dependencies:
   flutter_test:
