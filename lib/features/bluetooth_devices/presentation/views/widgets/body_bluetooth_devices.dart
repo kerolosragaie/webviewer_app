@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ConnectedDevicesBody extends StatelessWidget {
-  const ConnectedDevicesBody({super.key});
+class BluetoothDevicesBody extends StatelessWidget {
+  const BluetoothDevicesBody({super.key});
 
   @override
   Widget build(BuildContext context) {
