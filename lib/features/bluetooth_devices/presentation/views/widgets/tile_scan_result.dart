@@ -21,24 +21,8 @@ class ScanResultTile extends StatelessWidget {
             .asyncExpand((event) => result.device.state),
         initialData: BluetoothDeviceState.connecting,
         builder: (c, snapshot) {
-          String text;
-          switch (snapshot.data) {
-            case BluetoothDeviceState.connected:
-              text = 'Connected';
-              break;
-            case BluetoothDeviceState.disconnected:
-              text = 'Disconnected';
-              break;
-            case BluetoothDeviceState.connecting:
-              text = 'Connecting';
-              break;
-            case BluetoothDeviceState.disconnecting:
-              text = 'Disconnecting';
-              break;
-            default:
-              text = snapshot.data.toString().substring(21).toUpperCase();
-              break;
-          }
+          String text = "Connecting";
+          text = _checkBluetoothState(snapshot, text);
           return Text(
             text,
             style: Styles.textStyle14,
@@ -120,5 +104,27 @@ class ScanResultTile extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _checkBluetoothState(
+      AsyncSnapshot<BluetoothDeviceState> snapshot, String text) {
+    switch (snapshot.data) {
+      case BluetoothDeviceState.connected:
+        text = 'Connected';
+        break;
+      case BluetoothDeviceState.disconnected:
+        text = 'Disconnected';
+        break;
+      case BluetoothDeviceState.connecting:
+        text = 'Connecting';
+        break;
+      case BluetoothDeviceState.disconnecting:
+        text = 'Disconnecting';
+        break;
+      default:
+        text = snapshot.data.toString().substring(21).toUpperCase();
+        break;
+    }
+    return text;
   }
 }
