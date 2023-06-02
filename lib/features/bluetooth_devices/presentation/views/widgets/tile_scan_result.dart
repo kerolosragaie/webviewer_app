@@ -47,13 +47,17 @@ class ScanResultTile extends StatelessWidget {
       ),
       children: <Widget>[
         //To view devices information (power level, etc...)
-        _buildAdvRow(context, 'Tx Power Level',
-            '${result.advertisementData.txPowerLevel ?? 'N/A'}'),
         _buildAdvRow(
-            context,
-            'Manufacturer Data',
-            BluetoothHandler.getNiceManufacturerData(
-                result.advertisementData.manufacturerData)),
+          context,
+          'Tx Power Level',
+          '${result.advertisementData.txPowerLevel ?? 'N/A'}',
+        ),
+        _buildAdvRow(
+          context,
+          'Manufacturer Data',
+          BluetoothHandler.getNiceManufacturerData(
+              result.advertisementData.manufacturerData),
+        ),
         _buildAdvRow(
             context,
             'Service UUIDs',
@@ -61,10 +65,11 @@ class ScanResultTile extends StatelessWidget {
                 ? result.advertisementData.serviceUuids.join(', ').toUpperCase()
                 : 'N/A'),
         _buildAdvRow(
-            context,
-            'Service Data',
-            BluetoothHandler.getNiceServiceData(
-                result.advertisementData.serviceData)),
+          context,
+          'Service Data',
+          BluetoothHandler.getNiceServiceData(
+              result.advertisementData.serviceData),
+        ),
       ],
     );
   }

@@ -3,8 +3,8 @@ import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:webviewer/features/bluetooth_devices/presentation/store/bluetooth_store.dart';
 import 'package:webviewer/features/bluetooth_devices/presentation/views/widgets/tile_scan_result.dart';
 
-class FindDevicesView extends StatelessWidget {
-  const FindDevicesView({super.key});
+class FindDevicesBody extends StatelessWidget {
+  const FindDevicesBody({super.key});
 
   @override
   Widget build(BuildContext context) {
