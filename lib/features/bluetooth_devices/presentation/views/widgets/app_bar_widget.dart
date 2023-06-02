@@ -6,9 +6,8 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text("Connected Devices"),
+      title: const Text("Bluetooth Devices"),
       centerTitle: true,
-      actions: const [],
     );
   }
 
