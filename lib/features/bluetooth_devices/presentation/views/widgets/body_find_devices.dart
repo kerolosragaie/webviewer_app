@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:webviewer/features/bluetooth_devices/presentation/store/bluetooth_store.dart';
 import 'package:webviewer/features/bluetooth_devices/presentation/views/widgets/tile_scan_result.dart';
 
@@ -12,17 +13,15 @@ class FindDevicesBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          StreamBuilder<List<ScanResult>>(
-            stream: bluetoothStore.flutterBluePlus.scanResults,
-            initialData: const [],
-            builder: (c, snapshot) => Column(
-              children: snapshot.data!
-                  .map(
-                    (r) => ScanResultTile(
-                      result: r,
-                    ),
-                  )
-                  .toList(),
+          Observer(
+            builder: (_) => StreamBuilder<List<ScanResult>>(
+              stream: bluetoothStore.flutterBluePlus.scanResults,
+              initialData: const [],
+              builder: (c, snapshot) => Column(
+                children: snapshot.data!
+                    .map((r) => ScanResultTile(result: r))
+                    .toList(),
+              ),
             ),
           ),
         ],

@@ -35,8 +35,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  #For service locater and in app route
-  get_it: ^7.2.0
+  #For App route
   go_router: ^6.5.6
   #State management
   provider: ^6.0.5

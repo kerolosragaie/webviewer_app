@@ -26,7 +26,7 @@ class CustomErrorWidget extends StatelessWidget {
             size: mQWidth * 0.3,
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.45,
+            width: mQWidth * 0.45,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
