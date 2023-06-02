@@ -15,10 +15,10 @@ class BluetoothDevicesBody extends StatelessWidget {
       initialData: BluetoothState.unknown,
       builder: (c, snapshot) {
         final state = bluetoothStore.state = snapshot.data;
-        if (state == BluetoothState.on) {
-          return const FindDevicesBody();
+        if (state == BluetoothState.off || state == BluetoothState.turningOff) {
+          return const BluetoothOffBody();
         }
-        return const BluetoothOffBody();
+        return const FindDevicesBody();
       },
     );
   }

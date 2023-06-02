@@ -21,7 +21,7 @@ class ScanResultTile extends StatelessWidget {
             .asyncExpand((event) => result.device.state),
         initialData: BluetoothDeviceState.connecting,
         builder: (c, snapshot) {
-          String text = "Connecting";
+          String text = "Checking";
           text = _checkBluetoothState(snapshot, text);
           return Text(
             text,
