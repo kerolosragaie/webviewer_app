@@ -23,7 +23,7 @@ Used Mobx to handle state management of the app, while provider to provide the M
 ## Bluetooth devices view
 > Used package: flutter_blue_plus.
 
-> Note: Unfortunately flutter_blue_plus was published from 11 days ago (from 6/5/2023) And found it is unstable, some time it shows Bluetooth Device State and sometimes no (I will change the package for later).
+> Note: Unfortunately flutter_blue_plus was published from 11 days ago (from 6/5/2023) And found it is unstable, some time it shows Bluetooth Device State (connected, disconnected, etc...) and sometimes no (I will change the package later).
 
 ### Bluetooth Store (Mobx)
 1. It can show the state of devices's bluetooth if it is on or of
