@@ -23,7 +23,7 @@ class BluetoothOffBody extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Text(
-            'Bluetooth Adapter is ${bluetoothStore.state != null ? bluetoothStore.state.toString().substring(15) : 'not available'}.',
+            'Bluetooth Adapter is ${_getBluetoothState(bluetoothStore)}.',
             style: Styles.textStyle16,
           ),
           const SizedBox(height: 10),
@@ -35,6 +35,11 @@ class BluetoothOffBody extends StatelessWidget {
       ),
     );
   }
+
+  String _getBluetoothState(BluetoothStore bluetoothStore) =>
+      bluetoothStore.state != null
+          ? bluetoothStore.state.toString().substring(15)
+          : 'not available';
 
   void _turnOnBluetooth(FlutterBluePlus flutterBluePlus) {
     if (Platform.isAndroid) flutterBluePlus.turnOn();
