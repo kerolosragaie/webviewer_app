@@ -20,10 +20,15 @@ Used Mobx to handle state management of the app, while provider to provide the M
 
 4. A CustomErrorWidget and beautiful loading indicators are shown to the user.
 
+<img src="assets/gifs/webview.gif" width="300" height="560"/>
+
 ## Bluetooth devices view
 > Used package: flutter_blue_plus.
 
 > Note: Unfortunately flutter_blue_plus was published from 11 days ago (from 6/5/2023) And found it is unstable, some time it shows Bluetooth Device State (connected, disconnected, etc...) and sometimes no (I will change the package later).
+
+- Below you will see that i connected to my bluetooth air pods (named: Aukey), but when i tested on another device and connect to same bluetooth device it shows discconeted, some thing wrong with this package!
+<img src="assets/gifs/bluetooth.gif" width="300" height="560"/>
 
 ### Bluetooth Store (Mobx)
 1. It can show the state of devices's bluetooth if it is on or of
