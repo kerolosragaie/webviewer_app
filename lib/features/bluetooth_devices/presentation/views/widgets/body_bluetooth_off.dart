@@ -4,8 +4,8 @@ import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:webviewer/core/utils/styles.dart';
 import 'package:webviewer/features/bluetooth_devices/presentation/store/bluetooth_store.dart';
 
-class BluetoothOffView extends StatelessWidget {
-  const BluetoothOffView({Key? key}) : super(key: key);
+class BluetoothOffBody extends StatelessWidget {
+  const BluetoothOffBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

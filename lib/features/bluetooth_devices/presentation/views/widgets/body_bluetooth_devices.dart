@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:webviewer/features/bluetooth_devices/presentation/store/bluetooth_store.dart';
-import 'package:webviewer/features/bluetooth_devices/presentation/views/widgets/view_bluetooth_off.dart';
+import 'package:webviewer/features/bluetooth_devices/presentation/views/widgets/body_bluetooth_off.dart';
 import 'package:webviewer/features/bluetooth_devices/presentation/views/widgets/body_find_devices.dart';
 
 class BluetoothDevicesBody extends StatelessWidget {
@@ -18,7 +18,7 @@ class BluetoothDevicesBody extends StatelessWidget {
         if (state == BluetoothState.on) {
           return const FindDevicesBody();
         }
-        return const BluetoothOffView();
+        return const BluetoothOffBody();
       },
     );
   }
