@@ -13,9 +13,7 @@ class HomeViewBody extends StatelessWidget {
     final webviewStore = getWebviewStore(context);
     return Observer(
       builder: (_) {
-        if (webviewStore.webviewStoreState == WebviewStoreState.loading) {
-          return LoadingIndicators.ballSpinFadeLoader(context: context);
-        } else if (webviewStore.webviewStoreState == WebviewStoreState.loaded) {
+        if (webviewStore.webviewStoreState == WebviewStoreState.loaded) {
           return webviewStore.webView!;
         } else if (webviewStore.webviewStoreState == WebviewStoreState.error) {
           return CustomErrorWidget(

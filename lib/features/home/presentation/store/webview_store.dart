@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_pro/webview_flutter.dart';
@@ -9,13 +8,13 @@ part 'webview_store.g.dart';
 
 class WebviewStore = WebviewStoreBase with _$WebviewStore;
 
-enum WebviewStoreState { loading, loaded, error }
+enum WebviewStoreState { loaded, error }
 
 abstract class WebviewStoreBase with Store {
   WebviewStoreBase(BuildContext _);
 
   @observable
-  WebviewStoreState webviewStoreState = WebviewStoreState.loading;
+  WebviewStoreState webviewStoreState = WebviewStoreState.loaded;
 
   @observable
   WebViewController? controller;
@@ -44,18 +43,13 @@ abstract class WebviewStoreBase with Store {
         errorMessage = error;
         webviewStoreState = WebviewStoreState.error;
       },
-      onProgress: (int progress) {
-        log("Progress $progress%");
-      },
       gestureNavigationEnabled: true,
       geolocationEnabled: false,
     );
-    webviewStoreState = WebviewStoreState.loaded;
   }
 
   @action
   void reloadUrl() {
-    webviewStoreState = WebviewStoreState.loading;
     try {
       controller!
           .reload()
@@ -64,7 +58,7 @@ abstract class WebviewStoreBase with Store {
       if (e is WebResourceError) {
         webviewStoreState = WebviewStoreState.error;
       }
-      //Will load the cached site
+      //Will load the cached site (data)
       webviewStoreState = WebviewStoreState.loaded;
     }
   }
