@@ -37,7 +37,7 @@ Used Mobx to handle state management of the app, while provider to provide the M
     BluetoothState? state;
 ```
 
-2. Uses only one instance across the whole app (so no need to use service locater/dependency injection ).
+2. Uses only one instance across the whole app (so no need to use service locater/dependency injection).
 
 ```dart
     @observable
@@ -48,4 +48,4 @@ Used Mobx to handle state management of the app, while provider to provide the M
 ## App folder structure
 > Divided the app into two folders `core` and `features`.
 1. `core` folder, has the constants, Utils (functions, errors, etc..) and widgets that are used across the whole app.
-2. `features` folder, the app is divided into features where each feature contains its own view, store and widgets (using MVVM pattern).
+2. `features` folder, the app is divided into features where each feature contains its own view, Mobx store and widgets (using MVVM pattern).
