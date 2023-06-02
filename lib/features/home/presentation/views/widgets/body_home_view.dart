@@ -27,20 +27,5 @@ class HomeViewBody extends StatelessWidget {
         return LoadingIndicators.ballSpinFadeLoader(context: context);
       },
     );
-
-    // return BlocBuilder<WebviewCubit, WebviewState>(
-    //   builder: (context, state) {
-    //     if (state is WebviewLoading) {
-    //       return LoadingIndicators.ballSpinFadeLoader(context: context);
-    //     } else if (state is WebviewLoaded) {
-    //       return state.webView;
-    //     } else if (state is WebviewError) {
-    //       return CustomErrorWidget(
-    //         errorMessage: state.error.message,
-    //       );
-    //     }
-    //     return LoadingIndicators.ballSpinFadeLoader(context: context);
-    //   },
-    // );
   }
 }
