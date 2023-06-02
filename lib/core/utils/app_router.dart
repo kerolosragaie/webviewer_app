@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:webviewer/core/utils/functions/custom_transition_animated_page.dart';
+import 'package:webviewer/features/bluetooth_devices/presentation/views/bluetooth_devices_view.dart';
 import 'package:webviewer/features/home/presentation/views/home_view.dart';
 
 // Routes names
@@ -18,8 +19,7 @@ abstract class AppRouter {
         pageBuilder: (context, state) =>
             CustomTransitionAnimatedPage.transitionFade(
           state: state,
-          page: const HomeView(),
-          // page: const BluetoothDevicesView(),
+          page: const BluetoothDevicesView(),
         ),
       ),
     ],
