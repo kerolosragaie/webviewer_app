@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
+import 'package:webviewer/core/utils/functions/bluetooth_handler.dart';
 import 'package:webviewer/core/utils/styles.dart';
 
 class ScanResultTile extends StatelessWidget {
@@ -13,6 +14,8 @@ class ScanResultTile extends StatelessWidget {
       leading: Text(
         result.rssi.toString(),
       ),
+      //? Note: Unfortunately flutter_blue_plus was published from 11 days ago (from 6/5/2023)
+      //? And found it is unstable, some time streaming bluetooth BluetoothDeviceState works and some times no :(
       trailing: StreamBuilder<BluetoothDeviceState>(
         stream: Stream.periodic(const Duration(seconds: 4))
             .asyncExpand((event) => result.device.state),
@@ -43,18 +46,25 @@ class ScanResultTile extends StatelessWidget {
         },
       ),
       children: <Widget>[
+        //To view devices information (power level, etc...)
         _buildAdvRow(context, 'Tx Power Level',
             '${result.advertisementData.txPowerLevel ?? 'N/A'}'),
-        _buildAdvRow(context, 'Manufacturer Data',
-            getNiceManufacturerData(result.advertisementData.manufacturerData)),
+        _buildAdvRow(
+            context,
+            'Manufacturer Data',
+            BluetoothHandler.getNiceManufacturerData(
+                result.advertisementData.manufacturerData)),
         _buildAdvRow(
             context,
             'Service UUIDs',
             (result.advertisementData.serviceUuids.isNotEmpty)
                 ? result.advertisementData.serviceUuids.join(', ').toUpperCase()
                 : 'N/A'),
-        _buildAdvRow(context, 'Service Data',
-            getNiceServiceData(result.advertisementData.serviceData)),
+        _buildAdvRow(
+            context,
+            'Service Data',
+            BluetoothHandler.getNiceServiceData(
+                result.advertisementData.serviceData)),
       ],
     );
   }
@@ -105,33 +115,5 @@ class ScanResultTile extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  String getNiceHexArray(List<int> bytes) {
-    return '[${bytes.map((i) => i.toRadixString(16).padLeft(2, '0')).join(', ')}]'
-        .toUpperCase();
-  }
-
-  String getNiceManufacturerData(Map<int, List<int>> data) {
-    if (data.isEmpty) {
-      return 'N/A';
-    }
-    List<String> res = [];
-    data.forEach((id, bytes) {
-      res.add(
-          '${id.toRadixString(16).toUpperCase()}: ${getNiceHexArray(bytes)}');
-    });
-    return res.join(', ');
-  }
-
-  String getNiceServiceData(Map<String, List<int>> data) {
-    if (data.isEmpty) {
-      return 'N/A';
-    }
-    List<String> res = [];
-    data.forEach((id, bytes) {
-      res.add('${id.toUpperCase()}: ${getNiceHexArray(bytes)}');
-    });
-    return res.join(', ');
   }
 }
